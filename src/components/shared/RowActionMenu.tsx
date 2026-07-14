@@ -25,7 +25,7 @@ const MENU_PADDING = 16;
 export default function RowActionMenu({
   items,
   menuWidth = 256,
-  triggerClassName = "text-gray-400 hover:text-gray-600 dark:text-slate-500 dark:hover:text-slate-300",
+  triggerClassName = "text-gray-400 hover:text-gray-600",
   ariaLabel = "Row actions",
 }: RowActionMenuProps) {
   const [open, setOpen] = useState(false);
@@ -112,7 +112,7 @@ export default function RowActionMenu({
           <div
             ref={menuRef}
             role="menu"
-            className="fixed z-50 rounded-xl border border-primary-200 bg-white py-2 shadow-lg dark:bg-slate-900"
+            className="fixed z-50 rounded-xl border border-primary-200 bg-white py-2 shadow-lg"
             style={{
               top: `${position.top}px`,
               left: `${position.left}px`,
@@ -132,10 +132,10 @@ export default function RowActionMenu({
                     setOpen(false);
                     item.onClick();
                   }}
-                  className="flex w-full items-center gap-3 px-4 py-2.5 text-left text-sm transition-colors hover:bg-gray-50 dark:hover:bg-slate-800"
+                  className="flex w-full items-center gap-3 px-4 py-2.5 text-left text-sm transition-colors hover:bg-gray-50"
                 >
                   <Icon size={16} className="shrink-0 text-primary" />
-                  <span className="text-gray-700 dark:text-slate-100">{item.label}</span>
+                  <span className="text-gray-700">{item.label}</span>
                 </button>
               );
             })}

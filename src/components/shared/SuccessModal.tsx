@@ -73,16 +73,15 @@ export default function SuccessModal({
   const styles = VARIANT_STYLES[variant];
   return (
     <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/40 backdrop-blur-[1px] p-4">
-      <div className="relative w-full max-w-[500px] overflow-hidden rounded-[30px] bg-white shadow-[0_25px_60px_rgba(0,0,0,0.18)] dark:bg-slate-900">
-
+      <div className="relative w-full max-w-[500px] overflow-hidden rounded-[30px] bg-white shadow-[0_25px_60px_rgba(0,0,0,0.18)]">
+ 
         {/* Background Circles */}
-        <div className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-[#DCEBFF] opacity-90 blur-[1px] dark:bg-slate-800" />
-        <div className="absolute -left-14 -bottom-14 h-44 w-44 rounded-full bg-[#DCEBFF] opacity-90 blur-[1px] dark:bg-slate-800" />
-
+        <div className={`absolute -right-12 -top-12 h-40 w-40 rounded-full opacity-90 blur-[1px] ${styles.bg}`} />
+        <div className={`absolute -left-14 -bottom-14 h-44 w-44 rounded-full opacity-90 blur-[1px] ${styles.bg}`} />
         {/* Close */}
         <button
           onClick={onClose}
-          className="absolute right-7 top-7 text-[#6F7785] hover:scale-105 transition dark:text-slate-400"
+          className="absolute right-7 top-7 text-[#6F7785] hover:scale-105 transition"
         >
           <XIcon size={32} strokeWidth={2.2} />
         </button>
@@ -92,7 +91,7 @@ export default function SuccessModal({
           <SuccessIcon variant={variant} />
 
           {/* Heading */}
-          <h2 className="mt-10 text-center text-[28px] font-[700] leading-[34px] text-black dark:text-slate-100">
+          <h2 className="mt-10 text-center text-[28px] font-[700] leading-[34px] text-black">
             {title}
           </h2>
           {subtitle && (

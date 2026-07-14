@@ -57,23 +57,23 @@ const FormModal = ({
     <div
       className={
         isPage
-          ? "w-full rounded-2xl bg-white p-6 shadow-2xl dark:bg-slate-900"
-          : `max-h-[92vh] w-full ${maxWidth} overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl dark:bg-slate-900`
+          ? "w-full rounded-2xl bg-white p-6 shadow-2xl"
+          : `max-h-[92vh] w-full ${maxWidth} overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl`
       }
     >
         {/* Header */}
-        <div className="flex items-start justify-between border-b border-slate-100 pb-4 dark:border-slate-800">
+        <div className="flex items-start justify-between border-b border-slate-100 pb-4">
           <div className="flex items-center gap-3">
             {headerIcon ?? (
               <Image src="/add-icn.png" alt="Add Icon" width={50} height={50} />
             )}
             <div>
-              <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100">
+              <h2 className="text-xl font-bold text-slate-800">
                 {titleEn}{" "}
-                <span className="font-bold text-[#64748B] dark:text-slate-400">/ {titleHi}</span>
+                <span className="font-bold text-[#64748B]">/ {titleHi}</span>
               </h2>
               {(subtitleEn || subtitleHi) && (
-                <p className="text-sm text-slate-500 dark:text-slate-400">
+                <p className="text-sm text-slate-500">
                   {subtitleEn}
                   {subtitleHi && ` / ${subtitleHi}`}
                 </p>
@@ -84,7 +84,7 @@ const FormModal = ({
             <button
               type="button"
               onClick={onClose}
-              className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-gray-300 text-gray-500 transition hover:bg-gray-100 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800"
+              className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-gray-300 text-gray-500 transition hover:bg-gray-100"
             >
               <X size={18} strokeWidth={2.5} />
             </button>
@@ -92,7 +92,7 @@ const FormModal = ({
         </div>
 
         {/* Tabs */}
-        <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800">
+        <div className="flex items-center justify-between border-b border-slate-100">
           <div className="flex gap-6 overflow-x-auto no-scrollbar">
             {tabs.map((tab) => (
               <button
@@ -101,7 +101,7 @@ const FormModal = ({
                 onClick={() => onTabChange(tab)}
                 className={`relative shrink-0 pb-2 pt-2 text-sm font-medium transition-colors ${activeTab === tab
                     ? "text-primary"
-                    : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300"
+                    : "text-slate-500 hover:text-slate-700"
                   }`}
               >
                 {tab}
@@ -127,7 +127,7 @@ const FormModal = ({
 
         {/* Footer */}
         {!hideFooter && (
-          <div className="mt-6 flex items-center justify-end gap-3 border-t border-slate-100 pt-4 dark:border-slate-800">
+          <div className="mt-6 flex items-center justify-end gap-3 border-t border-slate-100 pt-4">
             <button
               type="button"
               onClick={onValidate}
@@ -161,14 +161,14 @@ const FormModal = ({
                   Save <ChevronDown size={16} />
                 </button>
                 {saveMenuOpen && (
-                  <div className="absolute bottom-12 right-0 w-40 rounded-lg border border-slate-200 bg-white py-1 shadow-lg dark:border-slate-800 dark:bg-slate-900">
+                  <div className="absolute bottom-12 right-0 w-40 rounded-lg border border-slate-200 bg-white py-1 shadow-lg">
                     <button
                       type="button"
                       onClick={() => {
                         setSaveMenuOpen(false);
                         onSave?.();
                       }}
-                      className="block w-full px-3 py-2 text-left text-sm text-slate-700 hover:bg-primary-50 dark:text-slate-100 dark:hover:bg-slate-800"
+                      className="block w-full px-3 py-2 text-left text-sm text-slate-700 hover:bg-primary-50"
                     >
                       Save
                     </button>
@@ -178,7 +178,7 @@ const FormModal = ({
                         setSaveMenuOpen(false);
                         onSave?.();
                       }}
-                      className="block w-full px-3 py-2 text-left text-sm text-slate-700 hover:bg-primary-50 dark:text-slate-100 dark:hover:bg-slate-800"
+                      className="block w-full px-3 py-2 text-left text-sm text-slate-700 hover:bg-primary-50"
                     >
                       Save & New
                     </button>

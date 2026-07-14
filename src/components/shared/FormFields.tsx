@@ -1,16 +1,16 @@
 "use client";
- 
+
 import { ChevronDown, Calendar, FileText, MoreVertical, X, Upload, Check, LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
- 
+
 // Figma "Read-only / filled" state — shared across TextInput, SelectInput and
 // DateInput so every pre-filled, non-editable field looks identical.
 const READONLY_FILLED_BG = "bg-[#F3F4F6]";
 const READONLY_FILLED_BORDER = "border-[#6A7282]";
 const READONLY_FILLED_SHADOW = "shadow-[0px_1px_0.5px_0.05px_#1D293D05]";
 const READONLY_FILLED_ICON_COLOR = "text-[#6A7282]";
- 
+
 export interface FieldShellProps {
   label: string;
   labelHi?: string;
@@ -21,7 +21,7 @@ export interface FieldShellProps {
   variant?: "default" | "large";
   noWrap?: boolean;
 }
- 
+
 export const FieldShell = ({
   label,
   labelHi,
@@ -57,7 +57,7 @@ export const FieldShell = ({
     {error && <p className="mt-1 text-sm text-red-500">This field is required</p>}
   </div>
 );
- 
+
 export interface TextInputProps {
   icon?: ReactNode ;
   value: string;
@@ -68,7 +68,7 @@ export interface TextInputProps {
   trailing?: ReactNode;
   type?: string;
 }
- 
+
 export const TextInput = ({
   icon,
   value,
@@ -83,7 +83,7 @@ export const TextInput = ({
   // (e.g. a name derived from a code lookup). Empty read-only fields and all
   // editable fields keep the existing styling untouched.
   const isFilledReadOnly = readOnly && value.trim() !== "";
- 
+
   return (
     <div className="relative flex items-center gap-2">
       {icon && (
@@ -115,7 +115,7 @@ export const TextInput = ({
     </div>
   );
 };
- 
+
 export interface SelectInputProps {
   icon?: ReactNode;
   value: string;
@@ -125,7 +125,7 @@ export interface SelectInputProps {
   error?: boolean;
   readOnly?: boolean;
 }
- 
+
 export const SelectInput = ({
   icon,
   value,
@@ -137,7 +137,7 @@ export const SelectInput = ({
 }: SelectInputProps) => {
   // Figma "Read-only / filled" state — see TextInput for details.
   const isFilledReadOnly = readOnly && value.trim() !== "";
- 
+
   return (
     <div className="relative flex items-center">
       {icon && (
@@ -174,7 +174,7 @@ export const SelectInput = ({
     </div>
   );
 };
- 
+
 export interface DateInputProps {
   value: string;
   onChange: (v: string) => void;
@@ -182,11 +182,11 @@ export interface DateInputProps {
   error?: boolean;
   readOnly?: boolean;
 }
- 
+
 export const DateInput = ({ value, onChange, placeholder, error, readOnly }: DateInputProps) => {
   // Figma "Read-only / filled" state — see TextInput for details.
   const isFilledReadOnly = readOnly && value.trim() !== "";
- 
+
   return (
     <div className="relative flex items-center">
       <span
@@ -216,7 +216,7 @@ export const DateInput = ({ value, onChange, placeholder, error, readOnly }: Dat
     </div>
   );
 };
- 
+
 export interface RadioYesNoProps {
   label: string;
   labelHi?: string;
@@ -224,11 +224,11 @@ export interface RadioYesNoProps {
   onChange: (v: boolean) => void;
   disabled?: boolean;
 }
- 
+
 export const RadioYesNo = ({ label, labelHi, value, onChange, disabled }: RadioYesNoProps) => (
   <div className=" last:mb-0 flex gap-2 items-center">
     <label className=" block text-sm large font-medium text-[#1F2858]">
- 
+
       {label}
       {labelHi && <span className="text-slate-600"> / {labelHi}</span>}
     </label>
@@ -304,7 +304,7 @@ export interface SectionCardProps {
   icon?: string | ReactNode;
   children: ReactNode;
 }
- 
+
 export const SectionCard = ({
   titleEn,
   titleHi,
@@ -339,7 +339,7 @@ export const SectionCard = ({
     {children}
   </div>
 );
- 
+
 export interface DocumentRowProps {
   label: string;
   checked: boolean;
@@ -350,7 +350,7 @@ export interface DocumentRowProps {
   onDocNumberChange: (v: string) => void;
   showDocNumber?: boolean;
 }
- 
+
 export const DocumentRow = ({
   label,
   checked,
@@ -399,23 +399,23 @@ export const DocumentRow = ({
     )}
   </div>
 );
- 
+
 export interface UploadZoneProps {
   titleEn: string;
   titleHi: string;
   subtitleEn?: string;
   subtitleHi?: string;
 }
- 
+
 export interface LookupButtonProps {
   items: string[];
   onPick: (item: string) => void;
 }
- 
+
 export const LookupButton = ({ items, onPick }: LookupButtonProps) => {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
- 
+
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
@@ -423,7 +423,7 @@ export const LookupButton = ({ items, onPick }: LookupButtonProps) => {
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
   }, []);
- 
+
   return (
     <div className="relative" ref={ref}>
       <button
@@ -453,7 +453,7 @@ export const LookupButton = ({ items, onPick }: LookupButtonProps) => {
     </div>
   );
 };
- 
+
 export interface PickerFieldProps {
   label: string;
   labelHi?: string;
@@ -463,7 +463,7 @@ export interface PickerFieldProps {
   placeholder?: string;
   onPickerClick: () => void;
 }
- 
+
 /** AccountMaster-style field: icon input + external lookup button */
 export const PickerField = ({
   label,
@@ -500,7 +500,7 @@ export const PickerField = ({
     </div>
   </FieldShell>
 );
- 
+
 export interface FormTextFieldProps {
   label: string;
   labelHi?: string;
@@ -511,7 +511,7 @@ export interface FormTextFieldProps {
   placeholder?: string;
   readOnly?: boolean;
 }
- 
+
 /** AccountMaster-style editable text field with icon */
 export const FormTextField = ({
   label,
@@ -537,7 +537,7 @@ export const FormTextField = ({
     </div>
   </FieldShell>
 );
- 
+
 export const UploadZone = ({ titleEn, titleHi, subtitleEn, subtitleHi }: UploadZoneProps) => (
   <SectionCard
     titleEn={titleEn}
@@ -566,7 +566,7 @@ export const UploadZone = ({ titleEn, titleHi, subtitleEn, subtitleHi }: UploadZ
     </div>
   </SectionCard>
 );
- 
+
 export interface ActionButtonsProps {
   onCancel?: () => void;
   onSubmit?: () => void;
@@ -574,7 +574,7 @@ export interface ActionButtonsProps {
   submitText?: string;
   className?: string;
 }
- 
+
 export const ActionButtons = ({
   onCancel,
   onSubmit,
@@ -601,8 +601,8 @@ export const ActionButtons = ({
     </button>
   </div>
 );
- 
- 
+
+
 export function SelectField({
   icon: Icon,
   labelEn,
@@ -625,12 +625,12 @@ export function SelectField({
   const [isEditing, setIsEditing] = useState(false);
   const [draft, setDraft] = useState(value ?? "");
   const [isOpen, setIsOpen] = useState(false);
- 
+
   const containerRef = useRef<HTMLDivElement>(null);
- 
+
   useEffect(() => {
     if (!isOpen) return;
- 
+
     const handleClickOutside = (e: MouseEvent) => {
       if (
         containerRef.current &&
@@ -639,30 +639,30 @@ export function SelectField({
         setIsOpen(false);
       }
     };
- 
+
     document.addEventListener("mousedown", handleClickOutside);
- 
+
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
- 
+
   const startEditing = () => {
     if (!editable) return;
     setDraft(value ?? "");
     setIsEditing(true);
   };
- 
+
   const commit = () => {
     setIsEditing(false);
     onChange?.(draft);
   };
- 
+
   // ---------------- Dropdown ----------------
- 
+
   if (options && options.length > 0) {
     return (
       <div ref={containerRef} className="flex h-full min-w-0 flex-col">
         <BilingualLabel en={labelEn} mr={labelMr} required={required} />
- 
+
         <div className="relative flex-1">
           <button
             type="button"
@@ -692,7 +692,7 @@ export function SelectField({
                 strokeWidth={1.8}
               />
             )}
- 
+
             <span
               className={`flex-1 truncate text-sm ${Icon ? "ml-3" : ""} ${
                 value ? "text-slate-600" : "text-slate-400"
@@ -700,14 +700,14 @@ export function SelectField({
             >
               {value || "Select"}
             </span>
- 
+
             <ChevronDown
               className={`h-5 w-5 text-slate-400 transition-transform ${
                 isOpen ? "rotate-180" : ""
               }`}
             />
           </button>
- 
+
           {isOpen && editable && (
             <div className="absolute left-0 right-0 top-full z-50 mt-1 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-lg">
               {options.map((option) => (
@@ -726,7 +726,7 @@ export function SelectField({
                     }`}
                 >
                   {option}
- 
+
                   {option === value && <Check className="h-4 w-4" />}
                 </button>
               ))}
@@ -736,7 +736,7 @@ export function SelectField({
       </div>
     );
   }
- 
+
   function BilingualLabel({
     en,
     mr,
@@ -766,18 +766,18 @@ export function SelectField({
       </label>
     );
   }
- 
+
   // ---------------- Editable Text ----------------
- 
+
   return (
     <div className="flex h-full  w-full flex-col">
       <BilingualLabel en={labelEn} mr={labelMr} required={required} />
- 
+
       <div className={`flex h-12 items-center rounded-lg border border-slate-600 ${!editable?"bg-slate-50" : "bg-white"} px-3`}>
         {Icon && (
           <Icon className="h-4 w-4 shrink-0 text-slate-400" strokeWidth={1.8} />
         )}
- 
+
         {isEditing ? (
           <input
             autoFocus
@@ -803,7 +803,7 @@ export function SelectField({
             {value || "—"}
           </button>
         )}
- 
+
         <ChevronDown className="h-5 w-5 text-slate-400" />
       </div>
     </div>
