@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { STATIC_LOGIN_ID, STATIC_PASSWORD } from "@/lib/auth";
 import OtpMethodModal, { type OtpMethodId } from "@/components/auth/OtpMethodModal";
 
-const LoginPage = () => {
+const page = () => {
   const router = useRouter();
 
   const [userId, setUserId] = useState("");
@@ -198,4 +198,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default page;

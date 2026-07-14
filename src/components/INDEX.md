@@ -87,6 +87,5 @@
 ### Singles
 - `ClientLayout.tsx` — authenticated shell (sidebar + header + content).
 - `Header.tsx`, `Nav.tsx` — top bars.
-- `Login/LoginPage.tsx` — login form (userId, password, branchCode) → /otp-verification.
 - `LanguageSwitcher.tsx` — EN/HI toggle.
 - `theme/` — `ThemeProvider.tsx`, `ThemeSwitcher.tsx`, `theme-constants.ts`.
